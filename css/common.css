@@ -2,7 +2,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, SimSun, "宋体", "Microsoft YaHei", "微软雅黑", sans-serif;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
-  background-color: #1e1e1e;
+  background-color: #000;
 }
 ul,
 ol,
@@ -26,47 +26,163 @@ li {
 .container:after {
   clear: both;
 }
+nav {
+  z-index: 100;
+}
+nav.navbar {
+  border-bottom: 1px solid #9a8461;
+}
 nav.navbar.navbar-fixed-bottom {
   position: fixed;
   bottom: 45px;
   width: 100%;
-}
-nav.navbar:hover .scroll-nav {
-  height: 3px;
 }
 nav.navbar .container {
   height: 38px;
 }
 nav.navbar .scroll-nav {
   position: relative;
+  bottom: -1px;
   width: 90%;
   height: 100%;
   margin: 0 auto;
   transition: height 1s;
-  overflow: hidden;
+  cursor: pointer;
+}
+nav.navbar .scroll-nav .left-border {
+  position: absolute;
+  height: 50%;
+  width: 2px;
+  background-color: #fff;
+  left: 0px;
+  bottom: -10px;
+}
+nav.navbar .scroll-nav .right-border {
+  position: absolute;
+  height: 50%;
+  width: 2px;
+  background-color: #9a8461;
+  right: 0px;
+  bottom: -10px;
 }
 nav.navbar .scroll-nav ul {
   left: 0;
   bottom: 0;
   position: absolute;
-  height: 100%;
-  transition: width 1s;
+  height: 3px;
+  transition: width 1s,height 0.8s;
+  overflow: hidden;
 }
 nav.navbar .scroll-nav ul li {
   position: absolute;
   top: 0px;
   line-height: 38px;
-  padding-left: 10px;
+  height: 100%;
+  text-align: center;
+}
+nav.navbar .scroll-nav ul li .sub-nav {
+  width: 100%;
+  height: 100%;
 }
 nav.navbar .scroll-nav ul.bg {
   background-color: #9a8461;
   color: #fff;
   width: 100%;
 }
+nav.navbar .scroll-nav ul.bg li {
+  border-right: 1px dashed #000;
+}
+nav.navbar .scroll-nav ul.bg .sub-nav li {
+  border-right: 0px dashed #fff;
+}
 nav.navbar .scroll-nav ul.fg {
   background-color: #fff;
   color: #333;
-  width: 20%;
   overflow: hidden;
-  margin-right: -3000000px;
+}
+nav.navbar .scroll-nav ul.fg li {
+  border-right: 1px dashed #000;
+}
+nav.navbar .scroll-nav ul.fg .sub-nav li {
+  border-right: 0px dashed #fff;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 53px;
+  background: #1e1e1e;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlMWUxZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgzJSIgc3RvcC1jb2xvcj0iIzFlMWUxZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgzJSIgc3RvcC1jb2xvcj0iIzFkMWQxZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxYzFjMWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #1e1e1e 0%, #1e1e1e 83%, #1d1d1d 83%, #1c1c1c 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e1e1e), color-stop(83%, #1e1e1e), color-stop(83%, #1d1d1d), color-stop(100%, #1c1c1c));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #1e1e1e 0%, #1e1e1e 83%, #1d1d1d 83%, #1c1c1c 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #1e1e1e 0%, #1e1e1e 83%, #1d1d1d 83%, #1c1c1c 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #1e1e1e 0%, #1e1e1e 83%, #1d1d1d 83%, #1c1c1c 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #1e1e1e 0%, #1e1e1e 83%, #1d1d1d 83%, #1c1c1c 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e1e1e', endColorstr='#1c1c1c', GradientType=0);
+  /* IE6-8 */
+}
+footer:hover .scroll-nav ul {
+  height: 100%;
+}
+footer:hover .scroll-nav ul.bg li {
+  transition: all 1.5s 0.5s;
+  border-right: 1px dashed #fff;
+}
+footer:hover .scroll-nav ul.fg li {
+  transition: all 1.5s 0.5s;
+  border-right: 1px dashed #9a8461;
+}
+section.content {
+  background: #fff;
+  height: 100%;
+}
+section.content .container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 960px;
+  color: #605f5f;
+  text-align: center;
+}
+section.content .container:before,
+section.content .container:after {
+  content: " ";
+  display: table;
+}
+section.content .container:after {
+  clear: both;
+}
+section.content .container h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #a0a0a0;
+}
+section.content .container h1 strong {
+  display: inline-block;
+  border-bottom: 3px solid #a0a0a0;
+  padding: 16px 40px;
+}
+section.content .container h3 {
+  font-size: 15px;
+}
+section.content .container h4 {
+  font-size: 12px;
+}
+section.content .container h4 strong {
+  display: inline-block;
+  border-top: 3px solid #a0a0a0;
+  padding: 12px 40px;
+}
+section.content .container p {
+  font-size: 15px;
 }
