@@ -62,58 +62,65 @@
 		//记录帧数，用于控制图片切换
 		var frameCount = 0;
 		//图片切换时的帧数	
-		var switchFrameCount = 300;
+		var switchFrameCount = 200;
 		var currentWelcomeSprite = 0;
-		var prevWelcomeSprite = 4;
-		var nextWelcomeSprite = 1;
+		var prevWelcomeSprite = welcomes.length - 1;
 		var currentTime = new Date().getTime();
 
 		$.each(welcomes, function() {
-			var dimension = getZoomDimension(1000, 616, winWidth, winHeight + 40, 1);
+			var dimension = getZoomDimension(1000, 616, winWidth, winHeight, 1);
 			this.width = dimension.w;
 			this.height = dimension.h;
-			this.position.x = renderer.width / 2;
-			this.position.y = renderer.height / 2;
-			this.anchor.x = 0.5;
-			this.anchor.y = 0.5;
+			this.position.x = - (dimension.w - winWidth) / 2;
+			this.position.y = - (dimension.h - winHeight) / 2;
 			
-			this.alpha = 0;
+			this.alpha = 1;
 			container.addChild(this);
 		});
 		welcomes[0].alpha = 1;
-		
-		console.log(container.height);
 
 		container.position.x = 0;
 		container.position.y = 0;
 
 		stage.addChild(container);
-		
-		var initScale = welcomes[0].scale.x;
+
 		function animate() {
 			requestAnimFrame(animate);
 			frameCount ++;
-			
-			if(frameCount >= switchFrameCount * 0.8) {
-				welcomes[currentWelcomeSprite].alpha = 1 - (frameCount - switchFrameCount * 0.8)/ (switchFrameCount * 0.2);
-				welcomes[nextWelcomeSprite].alpha = (frameCount - switchFrameCount * 0.8)/ (switchFrameCount * 0.2);
-			}
-			
-			welcomes[currentWelcomeSprite].scale.x = initScale + frameCount / switchFrameCount * 0.5;
-			welcomes[currentWelcomeSprite].scale.y = initScale + frameCount / switchFrameCount * 0.5;
-			
 			if(frameCount == switchFrameCount) {
-				welcomes[currentWelcomeSprite].scale.x = initScale;
-				welcomes[currentWelcomeSprite].scale.y = initScale;
-				frameCount = 0;
+				currentTime = new Date().getTime();
+				prevWelcomeSprite = currentWelcomeSprite;
 				currentWelcomeSprite = (currentWelcomeSprite + 1) % welcomes.length;
-				nextWelcomeSprite = (nextWelcomeSprite + 1)% welcomes.length;
+				frameCount = 0;
+				console.log('pre:' + prevWelcomeSprite + ' curr:' + currentWelcomeSprite);
 			}
+			var start = new Date().getTime() - currentTime;
+			if(welcomes[prevWelcomeSprite].alpha >= 0) {
+				var preAlpha = $.easing.easeInQuad(null, start, 1, -1, 3000);
+				if(preAlpha < 0) {
+					preAlpha = 0;
+				}
+				if(preAlpha > 1) {
+					preAlpha = 1;
+				}
+				welcomes[prevWelcomeSprite].alpha = preAlpha;
+			} 
+			if(welcomes[currentWelcomeSprite].alpha <= 1) {
+				var currAlpha = $.easing.easeInQuad(null, start, 0, 1, 3000);
+				if(currAlpha < 0) {
+					currAlpha = 0;
+				}
+				if(currAlpha > 1) {
+					currAlpha = 1;
+				}
+				welcomes[currentWelcomeSprite].alpha = currAlpha;
+				
+				// welcomes[currentWelcomeSprite].scale.x = 2;
+				// welcomes[currentWelcomeSprite].scale.y = 2;
+			}
+			
 			renderer.render(stage);
 		}
-		requestAnimFrame(function(){
-			renderer.render(stage);
-		});
 		requestAnimFrame(animate);
 		
 		$(window).on('mousemove', function(e){

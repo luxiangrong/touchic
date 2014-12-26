@@ -1,0 +1,66 @@
+{
+	"frames": {
+		"welcome_01.jpg": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 1000,
+				"h": 616
+			},
+			"rotated": false,
+			"trimmed": false
+		},
+		"welcome_02.jpg": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 1000,
+				"h": 616
+			},
+			"rotated": false,
+			"trimmed": false
+		},
+		"welcome_03.jpg": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 1000,
+				"h": 616
+			},
+			"rotated": false,
+			"trimmed": false
+		},
+		"welcome_04.jpg": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 1000,
+				"h": 616
+			},
+			"rotated": false,
+			"trimmed": false
+		},
+		"welcome_05.jpg": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 1000,
+				"h": 616
+			},
+			"rotated": false,
+			"trimmed": false
+		}
+	},
+	"meta": {
+		"app": "http://www.texturepacker.com",
+		"version": "1.0",
+		"image": "SpriteSheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 256,
+			"h": 512
+		},
+		"scale": "1",
+		"smartupdate": "$TexturePacker:SmartUpdate:9e3e5afd01ea8e418afabfbdcd724485$"
+	}
+}

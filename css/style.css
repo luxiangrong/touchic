@@ -443,3 +443,6 @@ section.content .container h4 strong {
 section.content .container p {
   font-size: 15px;
 }
+section#welcome {
+  overflow: hidden;
+}
