@@ -18,7 +18,7 @@
 
 		return {
 			w: w1 / rate,
-			h: h2 / rate
+			h: h1 / rate
 		};
 	}
 	
@@ -57,19 +57,98 @@
 		// create a texture from an image path
 		var welcomeWidth = 1000;
 		var welcomeHeight = 616;
+		var welcomesContainer = [
+			new PIXI.DisplayObjectContainer(),
+			new PIXI.DisplayObjectContainer(),
+			new PIXI.DisplayObjectContainer(),
+			new PIXI.DisplayObjectContainer(),
+			new PIXI.DisplayObjectContainer()
+		];
 		var welcomes = [PIXI.Sprite.fromImage("images/welcome_01.jpg"), PIXI.Sprite.fromImage("images/welcome_02.jpg"), PIXI.Sprite.fromImage("images/welcome_03.jpg"), PIXI.Sprite.fromImage("images/welcome_04.jpg"), PIXI.Sprite.fromImage("images/welcome_05.jpg")];
+		var welcomesText = [
+			{
+				title:new PIXI.Text('FIND YOUR PEERS',{font: "35px FZLTZHK", fill: "#5d5d5d", align: "left"}),
+				desc:new  PIXI.Text('Join a global community of the most fascinating creators',{font: "35px FZLTXHK", fill: "#5d5d5d", align: "left"}),
+				settings: {
+					title: {
+						x: renderer.width * 0.2,
+						y: renderer.height * 0.2
+					},
+					desc: {
+						x: renderer.width * 0.3,
+						y: renderer.height * 0.3
+					}
+					
+				}
+			},
+			{
+				title:new PIXI.Text('FIND YOUR PEERS',{font: "35px FZLTZHK", fill: "#5d5d5d", align: "left"}),
+				desc:new  PIXI.Text('Join a global community of the most fascinating creators',{font: "35px FZLTXHK", fill: "#5d5d5d", align: "left"}),
+				settings: {
+					title: {
+						x: renderer.width * 0.5,
+						y: renderer.height * 0.5
+					},
+					desc: {
+						x: renderer.width * 0.4,
+						y: renderer.height * 0.6
+					}
+				}
+			},
+			{
+				title:new PIXI.Text('FIND YOUR PEERS',{font: "35px FZLTZHK", fill: "#5d5d5d", align: "left"}),
+				desc:new  PIXI.Text('Join a global community of the most fascinating creators',{font: "35px FZLTXHK", fill: "#5d5d5d", align: "left"}),
+				settings: {
+					title: {
+						x: renderer.width * 0.4,
+						y: renderer.height * 0.6
+					},
+					desc: {
+						x: renderer.width * 0.6,
+						y: renderer.height * 0.7
+					}
+				}
+			},
+			{
+				title:new PIXI.Text('FIND YOUR PEERS',{font: "35px FZLTZHK", fill: "#5d5d5d", align: "left"}),
+				desc:new  PIXI.Text('Join a global community of the most fascinating creators',{font: "35px FZLTXHK", fill: "#5d5d5d", align: "left"}),
+				settings: {
+					title: {
+						x: renderer.width * 0.7,
+						y: renderer.height * 0.6
+					},
+					desc: {
+						x: renderer.width * 0.5,
+						y: renderer.height * 0.7
+					}
+				}
+			},
+			{
+				title:new PIXI.Text('FIND YOUR PEERS',{font: "35px FZLTZHK", fill: "#5d5d5d", align: "left"}),
+				desc:new  PIXI.Text('Join a global community of the most fascinating creators',{font: "35px FZLTXHK", fill: "#5d5d5d", align: "left"}),
+				settings: {
+					title: {
+						x: renderer.width * 0.5,
+						y: renderer.height * 0.4
+					},
+					desc: {
+						x: renderer.width * 0.6,
+						y: renderer.height * 0.5
+					}
+				}
+			}
+		];
 		
 		//记录帧数，用于控制图片切换
 		var frameCount = 0;
 		//图片切换时的帧数	
-		var switchFrameCount = 300;
+		var switchFrameCount = 1000;
 		var currentWelcomeSprite = 0;
 		var prevWelcomeSprite = 4;
 		var nextWelcomeSprite = 1;
-		var currentTime = new Date().getTime();
 
-		$.each(welcomes, function() {
-			var dimension = getZoomDimension(1000, 616, winWidth, winHeight + 40, 1);
+		$.each(welcomes, function(i) {
+			var dimension = getZoomDimension(1000, 616, renderer.width, renderer.height , 1);
 			this.width = dimension.w;
 			this.height = dimension.h;
 			this.position.x = renderer.width / 2;
@@ -77,38 +156,80 @@
 			this.anchor.x = 0.5;
 			this.anchor.y = 0.5;
 			
-			this.alpha = 0;
-			container.addChild(this);
+			welcomesContainer[i].addChild(this);
 		});
-		welcomes[0].alpha = 1;
 		
-		console.log(container.height);
-
+		function initWelcomesText() {
+			$.each(welcomesText, function(i,item) {
+				this.title.position.x = this.settings.title.x;
+				this.title.position.y = this.settings.title.y;
+				this.desc.position.x = this.settings.desc.x;
+				this.desc.position.y = this.settings.desc.y;
+				
+				welcomesContainer[i].addChild(this.title);
+				welcomesContainer[i].addChild(this.desc);
+			});
+		}
+		initWelcomesText();
+		
+		function initWelcomesContainer() {
+			$.each(welcomesContainer, function(i,item) {
+				this.position.x = 0;
+				this.position.y = 0;
+				this.alpha = 0;
+				
+				var graphics = new PIXI.Graphics();
+	
+				// set a fill and line style
+				graphics.beginFill(0xFF3300);
+				graphics.lineStyle(1, 0x9a8461, 1);
+				graphics.moveTo(0, (welcomesText[i].settings.title.y + welcomesText[i].settings.desc.y) / 2 );
+				graphics.lineTo(renderer.width, (welcomesText[i].settings.title.y + welcomesText[i].settings.desc.y) / 2 );
+				
+				this.addChild(graphics);
+				
+				container.addChild(this);
+			});
+		}
+		initWelcomesContainer();
+		
+		welcomesContainer[0].alpha = 1;
+		
+		
 		container.position.x = 0;
 		container.position.y = 0;
 
 		stage.addChild(container);
 		
-		var initScale = welcomes[0].scale.x;
+		var initScaleX = welcomes[0].width / 1000;
+		var initScaleY = welcomes[0].height / 616;
+		var current = 0;
+		var currentPercent = 0;
 		function animate() {
 			requestAnimFrame(animate);
+			
+			current = Math.floor(frameCount / switchFrameCount * 5 );
+			currentPercent = (frameCount / switchFrameCount) * 5 - current;
+			
+			if(currentPercent <= 0.2) {
+				welcomesContainer[current].alpha = (frameCount - current * switchFrameCount / 5) / (switchFrameCount / 5 * 0.2);
+			}
+			if(currentPercent >= 0.8) {
+				welcomesContainer[current].alpha = 1 - (frameCount - (current + 0.8) * switchFrameCount / 5) / (switchFrameCount / 5 * 0.2);
+			}
+			
 			frameCount ++;
 			
-			if(frameCount >= switchFrameCount * 0.8) {
-				welcomes[currentWelcomeSprite].alpha = 1 - (frameCount - switchFrameCount * 0.8)/ (switchFrameCount * 0.2);
-				welcomes[nextWelcomeSprite].alpha = (frameCount - switchFrameCount * 0.8)/ (switchFrameCount * 0.2);
-			}
+			welcomes[current].scale.x = initScaleX + frameCount / switchFrameCount * 0.3;
+			welcomes[current].scale.y = initScaleY + frameCount / switchFrameCount * 0.3;
 			
-			welcomes[currentWelcomeSprite].scale.x = initScale + frameCount / switchFrameCount * 0.5;
-			welcomes[currentWelcomeSprite].scale.y = initScale + frameCount / switchFrameCount * 0.5;
+			welcomesText[current].title.position.x = welcomesText[currentWelcomeSprite].settings.title.x + frameCount / switchFrameCount * 500;
+			welcomesText[current].desc.position.x = welcomesText[currentWelcomeSprite].settings.desc.x - frameCount / switchFrameCount * 500;
 			
 			if(frameCount == switchFrameCount) {
-				welcomes[currentWelcomeSprite].scale.x = initScale;
-				welcomes[currentWelcomeSprite].scale.y = initScale;
 				frameCount = 0;
-				currentWelcomeSprite = (currentWelcomeSprite + 1) % welcomes.length;
-				nextWelcomeSprite = (nextWelcomeSprite + 1)% welcomes.length;
 			}
+			
 			renderer.render(stage);
 		}
 		requestAnimFrame(function(){
