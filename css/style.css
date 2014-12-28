@@ -402,8 +402,8 @@ footer:hover .scroll-nav ul.fg li {
 section.team .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 0;
+  padding-right: 0;
 }
 section.team .container .col-avator {
   position: relative;
@@ -445,8 +445,8 @@ section.content {
 section.content .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 250px;
-  padding-right: 250px;
+  padding-left: 10%;
+  padding-right: 10%;
   position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
