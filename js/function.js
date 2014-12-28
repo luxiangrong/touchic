@@ -1,124 +1,125 @@
 ;(function($) {"use strict";
-
-	/**
-	 * 根据缩放系数，将w1和h1放大至充满屏幕
-	 * 
-	 * @param {Number} w1
-	 * @param {Number} h1
-	 * @param {Number} w2
-	 * @param {Number} h2
-	 * @param {Number} scale
-	 */
-	function getZoomDimension(w1, h1, w2, h2, scale) {
-		var rateW = w1 / w2;
-		var rateH = h1 / h2;
-
-		var rate = rateW < rateH ? rateW : rateH;
-		rate /= scale;
-
-		return {
-			w: w1 / rate,
-			h: h2 / rate
-		};
-	}
-	
-	function getScale(w1, h1, w2, h2, scale) {
-		var rateW = w1 / w2;
-		var rateH = h1 / h2;
-
-		var rate = rateW < rateH ? rateW : rateH;
-
-		return 1/rate * scale;
-	}
-
-
 	$(document).ready(function() {
-
-		var knav = $(".scroll-nav").knav();
 
 		var winHeight = $(window).height();
 		var winWidth = $(window).width();
 
-		$(".content").height(winHeight);
-
-		//PIXI舞台
-		var stage = new PIXI.Stage(0xEEEEEE);
-
-		// 创建一个PIXI WebGL渲染器
-		var renderer = new PIXI.autoDetectRenderer(winWidth, winHeight - 40);
-
-		// 将渲染器插入Dom中
-		$("#welcome").append(renderer.view);
-
+		$("body").height(winHeight);
 		
-
-		var container = new PIXI.DisplayObjectContainer();
-
-		// create a texture from an image path
-		var welcomeWidth = 1000;
-		var welcomeHeight = 616;
-		var welcomes = [PIXI.Sprite.fromImage("images/welcome_01.jpg"), PIXI.Sprite.fromImage("images/welcome_02.jpg"), PIXI.Sprite.fromImage("images/welcome_03.jpg"), PIXI.Sprite.fromImage("images/welcome_04.jpg"), PIXI.Sprite.fromImage("images/welcome_05.jpg")];
-		
-		//记录帧数，用于控制图片切换
-		var frameCount = 0;
-		//图片切换时的帧数	
-		var switchFrameCount = 300;
-		var currentWelcomeSprite = 0;
-		var prevWelcomeSprite = 4;
-		var nextWelcomeSprite = 1;
-		var currentTime = new Date().getTime();
-
-		$.each(welcomes, function() {
-			var dimension = getZoomDimension(1000, 616, winWidth, winHeight + 40, 1);
-			this.width = dimension.w;
-			this.height = dimension.h;
-			this.position.x = renderer.width / 2;
-			this.position.y = renderer.height / 2;
-			this.anchor.x = 0.5;
-			this.anchor.y = 0.5;
-			
-			this.alpha = 0;
-			container.addChild(this);
-		});
-		welcomes[0].alpha = 1;
-		
-		console.log(container.height);
-
-		container.position.x = 0;
-		container.position.y = 0;
-
-		stage.addChild(container);
-		
-		var initScale = welcomes[0].scale.x;
-		function animate() {
-			requestAnimFrame(animate);
-			frameCount ++;
-			
-			if(frameCount >= switchFrameCount * 0.8) {
-				welcomes[currentWelcomeSprite].alpha = 1 - (frameCount - switchFrameCount * 0.8)/ (switchFrameCount * 0.2);
-				welcomes[nextWelcomeSprite].alpha = (frameCount - switchFrameCount * 0.8)/ (switchFrameCount * 0.2);
-			}
-			
-			welcomes[currentWelcomeSprite].scale.x = initScale + frameCount / switchFrameCount * 0.5;
-			welcomes[currentWelcomeSprite].scale.y = initScale + frameCount / switchFrameCount * 0.5;
-			
-			if(frameCount == switchFrameCount) {
-				welcomes[currentWelcomeSprite].scale.x = initScale;
-				welcomes[currentWelcomeSprite].scale.y = initScale;
-				frameCount = 0;
-				currentWelcomeSprite = (currentWelcomeSprite + 1) % welcomes.length;
-				nextWelcomeSprite = (nextWelcomeSprite + 1)% welcomes.length;
-			}
-			renderer.render(stage);
+		function createTextTween(textContainer) {
+			var timeline = new TimelineMax();
+			timeline.fromTo([textContainer.find('h1'), textContainer.find('p')], 1, {opacity: 0}, {opacity: 1});
+			timeline.from(textContainer.find('h1'), 5, {left: "-=150px"}, "-=1");
+			timeline.from(textContainer.find('p'), 5, {left: "+=150px"}, "-=5");
+			return timeline;
 		}
-		requestAnimFrame(function(){
-			renderer.render(stage);
-		});
-		requestAnimFrame(animate);
 		
-		$(window).on('mousemove', function(e){
-			// console.log(e);
-		}); 
+		function createWelcomeItemTween(welcomeItemContainer) {
+			var timeline = new TimelineMax();
+			timeline.to(welcomeItemContainer, 1, {opacity: 1});
+			timeline.fromTo(welcomeItemContainer.find('.img'), 10, {scale: 1}, {scale: 1.2}, -1);
+			timeline.add(createTextTween(welcomeItemContainer.find('.text')), "-=11");
+			timeline.to(welcomeItemContainer, 1, {opacity: 0});
+			return timeline;
+		}
+		
+
+		var t1 = new TimelineMax();
+		t1.timeScale(2);
+		$('#welcome').show();
+		$('#welcome article').each(function(i, item){
+			t1.add(createWelcomeItemTween($(this)), "-=5");
+		});
+		
+		var txt;
+		
+		function splitText(elem) {
+	        var prevLetter, sentence,
+	            sentence = elem.text().split("");
+	        $(elem).text('');
+	        $.each(sentence, function(index, val) {
+	            if(val === " "){
+	                val = "&nbsp;";
+	            }
+	            var letter = $("<div/>", {
+	                        id : "txt" + index
+	            }).addClass('txt').html(val).appendTo($(elem));
+	     
+	            if(prevLetter) {
+	                $(letter).css("left", ($(prevLetter).position().left + $(letter).width()) + "px");
+	            };
+	            prevLetter = letter;
+	        });
+	        txt = $(".txt");
+	    }
+		
+		t1.call(function(){
+			$('.content').hide();
+			$("#home").show();
+			
+			splitText($("#home h1.l1"));
+			splitText($("#home h1.l2"));
+			TweenMax.set($("#home h1"), {perspective:500});
+			
+			var tl = new TimelineMax({repeat:0});
+			tl.staggerFrom(txt, 0.4, {alpha:0}, 0.06, "textEffect");
+        	tl.staggerFrom(txt, 0.8, {rotationY:"-270deg", top:80, transformOrigin: "50% 50% -80"}, 0.06, "textEffect");
+        	tl.staggerTo(txt, 0.6, {rotationX:"360deg", color:"#fff", transformOrigin:"50% 50% 10"}, 0.02); 
+			tl.from($("#home .text"), 1, {left: "-1000px", alpha: 0}, "-=1");
+			
+			$(document).one('click', function(){
+				var knav = $(".scroll-nav").knav({
+					move: function(index, subIndex) {
+						$('.content').hide();
+						switch(index) {
+							case 3:
+								var section = $("[data-index=" + index + "]");
+								TweenMax.fromTo(section.find('.col-avator'), 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"});
+								TweenMax.fromTo(section.find('.col-description'), 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"});
+								$("[data-index=3][data-sub-index=" + subIndex + "]").show();
+								break;
+							default:
+								var section = $("[data-index=" + index + "]");
+								
+								TweenMax.fromTo(section, 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"});
+								section.show();
+								
+								break;
+						}
+					},
+					initIndex: 0,
+					initSubIndex: 0
+				});
+				knav.show();
+			});
+		});
+		
+		// t1.call(function(){
+			// var knav = $(".scroll-nav").knav({
+				// move: function(index, subIndex) {
+					// $('.content').hide();
+					// switch(index) {
+						// case 3:
+							// var section = $("[data-index=" + index + "]");
+							// TweenMax.fromTo(section.find('.col-avator'), 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"});
+							// TweenMax.fromTo(section.find('.col-description'), 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"});
+							// $("[data-index=3][data-sub-index=" + subIndex + "]").show();
+							// break;
+						// default:
+							// var section = $("[data-index=" + index + "]");
+// 							
+							// TweenMax.fromTo(section, 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"});
+							// section.show();
+// 							
+							// break;
+					// }
+				// },
+				// initIndex: 0,
+				// initSubIndex: 0
+			// });
+			// knav.show();
+		// });
+		
 
 	});
 })(jQuery);

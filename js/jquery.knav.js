@@ -16,12 +16,15 @@
 			var index = opts.initIndex,subIndex = opts.initSubIndex,subNavItemsCount;
 			var navItemWidth = navWidth / navItemsCount;
 
+			console.log(navWidth);
+			console.log(navItemsCount);
+
 			navItems.width(navWidth / navItemsCount);
 			navItems.each(function(i, item) {
 				$(item).css('left', i * navWidth / navItemsCount + 'px');
 				
 				var subNav = $(item).find('> ul');
-				var subNavWidth = subNav.width();
+				var subNavWidth = $(item).width();
 				var subNavItems = subNav.find('> li');
 				subNavItemsCount = subNavItems.length;
 				subNavItems.width(subNavWidth/subNavItemsCount);
@@ -51,10 +54,7 @@
 			_this.append(fg);
 			
 			updateUI(navWidth, index, subIndex, fg);
-			
-			console.log('Init');
-			console.log('主导航: ' + index);
-			console.log('子导航: ' + subIndex);
+			opts.move(index, subIndex);
 			
 			var isFF = 'MozAppearance' in document.documentElement.style;
 			var moving = false;
@@ -159,11 +159,9 @@
 
 	$.fn.knav.defaults = {
 		move: function(index, subIndex){
-			console.log('主导航: ' + index);
-			console.log('子导航: ' + subIndex);
 		},
 		initIndex: 0,
-		initSubIndex: 2
+		initSubIndex: 0
 	};
 
 })(jQuery);
