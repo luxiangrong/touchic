@@ -258,6 +258,7 @@ body {
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   background-color: #fff;
+  overflow-x: hidden;
 }
 ul,
 ol,
@@ -399,6 +400,128 @@ footer:hover .scroll-nav ul.fg li {
   transition: all 1.5s 0.5s;
   border-right: 1px dashed #9a8461;
 }
+footer .footer-bar {
+  position: relative;
+}
+footer .footer-bar .menu {
+  overflow: hidden;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  left: 10%;
+  margin-left: -16px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+footer .footer-bar .menu .menu-circle {
+  border: 1px solid #9a8461;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  position: absolute;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+footer .footer-bar .menu .menu-circle .menu-line {
+  position: absolute;
+  width: 14px;
+  background-color: #fff;
+  height: 2px;
+  left: 50%;
+  margin-left: -7px;
+}
+footer .footer-bar .menu .menu-circle .menu-line.menu-line-1 {
+  top: 8px;
+}
+footer .footer-bar .menu .menu-circle .menu-line.menu-line-2 {
+  top: 14px;
+}
+footer .footer-bar .menu .menu-circle .menu-line.menu-line-3 {
+  top: 20px;
+}
+footer .footer-bar .menu .menu-text {
+  position: absolute;
+  color: #fff;
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  left: 40px;
+}
+footer .footer-bar .menu:hover {
+  width: 120px;
+}
+footer .footer-bar .container {
+  margin-top: 15px;
+}
+footer .footer-bar .container .col-l {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+footer .footer-bar .container .col-r {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: right;
+}
+footer .footer-bar .container .col-r .col-r-wrap {
+  padding-right: 10px;
+}
+footer .footer-bar .container .col-r img {
+  vertical-align: middle;
+}
+footer .footer-bar .container .col-r a {
+  display: inline-block;
+}
+footer .footer-bar .container .col-r .lang {
+  display: inline-block;
+  font-weight: normal;
+  color: #fff;
+  font-size: 12px;
+  border: 1px dashed #fff;
+  line-height: 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  text-align: center;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+footer .footer-bar .container .col-r .lang:hover {
+  opacity: 1;
+}
+footer .footer-bar .container .col-r .icon {
+  display: inline-block;
+  width: 20px;
+  height: 30px;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+footer .footer-bar .container .col-r .icon:hover {
+  opacity: 1;
+}
+footer .footer-bar .container .col-r .icon.icon-fb {
+  background: url(../images/fb.png) no-repeat center center;
+}
+footer .footer-bar .container .col-r .icon.icon-wx {
+  background: url(../images/weixin.png) no-repeat center center;
+}
+footer .footer-bar .container .col-r .split {
+  display: inline-block;
+  border-left: 1px dashed #333;
+  vertical-align: middle;
+  height: 25px;
+  width: 1px;
+  margin: 0 3px 0 4px;
+}
 section.team .container {
   margin-right: auto;
   margin-left: auto;
@@ -441,6 +564,8 @@ section.content {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: absolute;
+  width: 100%;
 }
 section.content .container {
   margin-right: auto;
@@ -490,6 +615,12 @@ section.content .container h4 strong {
   border-top: 3px solid #a0a0a0;
   padding: 12px 40px;
 }
+section.touchic {
+  padding-top: 100px;
+}
+section#home {
+  height: 100%;
+}
 section#home article {
   width: 100%;
   height: 100%;
@@ -522,6 +653,8 @@ section#home article .img.img-1 {
 }
 section#home article h1 {
   color: #DDD;
+  font-family: "FZLTTH";
+  font-size: 36px;
   text-align: center;
 }
 section#home article h1 .txt {
@@ -533,6 +666,7 @@ section#home article .text {
   text-align: center;
   margin: 0 auto;
   margin-top: 100px;
+  font-family: "FZLTXH";
   font-size: 12px;
 }
 section#home article .text h4 {
@@ -547,6 +681,22 @@ section#home article .text h4 strong {
 }
 section#home article .text p {
   color: #fff;
+  position: relative;
+}
+section#home article .text p strong {
+  font-family: "FZLTTH";
+  font-size: 24px;
+  margin: 0 5px;
+  font-weight: normal;
+  position: absolute;
+}
+section#home article .text p strong.left {
+  left: -30px;
+  top: 0px;
+}
+section#home article .text p strong.right {
+  right: -20px;
+  bottom: -10px;
 }
 section#welcome {
   overflow: hidden;
@@ -617,6 +767,8 @@ section#welcome article .text p {
 }
 section#welcome article .text p strong {
   font-family: 'FZLTTH';
+  color: #3a3a3a;
+  margin: 0 5px;
 }
 section#welcome article .text .line {
   height: 1px;

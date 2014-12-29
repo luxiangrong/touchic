@@ -16,9 +16,6 @@
 			var index = opts.initIndex,subIndex = opts.initSubIndex,subNavItemsCount;
 			var navItemWidth = navWidth / navItemsCount;
 
-			console.log(navWidth);
-			console.log(navItemsCount);
-
 			navItems.width(navWidth / navItemsCount);
 			navItems.each(function(i, item) {
 				$(item).css('left', i * navWidth / navItemsCount + 'px');
@@ -37,6 +34,7 @@
 			});
 			
 			navItems.on('click', function(e){
+				e.stopPropagation();
 				index = $(this).index();
 				subNavItemsCount  = $(this).find('> ul > li').length;
 				var nextSubNavItemsCount = $(this).next().find('> ul > li').length;
@@ -58,6 +56,28 @@
 			
 			var isFF = 'MozAppearance' in document.documentElement.style;
 			var moving = false;
+			
+			$(document).on('click', function(){
+				currentSubItemsCount = bg.find('> li').eq(index).find('> ul > li').length;
+				if(index >= navItemsCount - 1 && subIndex >= currentSubItemsCount - 1) {
+					return;
+				}
+				
+				if(currentSubItemsCount == 0) {
+					index = index + 1;
+					subIndex = 0;
+				} else {
+					if(subIndex >= currentSubItemsCount - 1) {
+						index = index + 1;
+						subIndex = 0;
+					} else {
+						subIndex = (subIndex + 1) % currentSubItemsCount;
+					}
+				}
+				opts.move(index, subIndex);
+				updateUI(navWidth, index, subIndex, fg);
+			});
+			
 			_scrollable($(window)).on(isFF?'DOMMouseScroll':'mousewheel', function(e){
 				e.preventDefault();
 				
