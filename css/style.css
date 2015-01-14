@@ -257,7 +257,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, SimSun, "宋体", "Microsoft YaHei", "微软雅黑", sans-serif;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
-  background-color: #000;
+  background-color: #fff;
+  overflow-x: hidden;
 }
 ul,
 ol,
@@ -304,6 +305,7 @@ nav.navbar .scroll-nav {
   -webkit-transition: height 1s;
   transition: height 1s;
   cursor: pointer;
+  font-size: 12px;
 }
 nav.navbar .scroll-nav .left-border {
   position: absolute;
@@ -398,18 +400,214 @@ footer:hover .scroll-nav ul.fg li {
   transition: all 1.5s 0.5s;
   border-right: 1px dashed #9a8461;
 }
-section.content {
-  background: #fff;
-  height: 100%;
+footer .footer-bar {
+  position: relative;
 }
-section.content .container {
+footer .footer-bar .menu {
+  overflow: hidden;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  left: 10%;
+  margin-left: -16px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+footer .footer-bar .menu .menu-circle {
+  border: 1px solid #9a8461;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  position: absolute;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+footer .footer-bar .menu .menu-circle .menu-line {
+  position: absolute;
+  width: 14px;
+  background-color: #fff;
+  height: 2px;
+  left: 50%;
+  margin-left: -7px;
+}
+footer .footer-bar .menu .menu-circle .menu-line.menu-line-1 {
+  top: 8px;
+}
+footer .footer-bar .menu .menu-circle .menu-line.menu-line-2 {
+  top: 14px;
+}
+footer .footer-bar .menu .menu-circle .menu-line.menu-line-3 {
+  top: 20px;
+}
+footer .footer-bar .menu .menu-text {
+  position: absolute;
+  color: #fff;
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  left: 40px;
+}
+footer .footer-bar .menu:hover {
+  width: 120px;
+}
+footer .footer-bar .container {
+  margin-top: 15px;
+}
+footer .footer-bar .container .col-l {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+footer .footer-bar .container .col-r {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: right;
+}
+footer .footer-bar .container .col-r .col-r-wrap {
+  padding-right: 10px;
+}
+footer .footer-bar .container .col-r img {
+  vertical-align: middle;
+}
+footer .footer-bar .container .col-r a {
+  display: inline-block;
+}
+footer .footer-bar .container .col-r .lang {
+  display: inline-block;
+  font-weight: normal;
+  color: #fff;
+  font-size: 12px;
+  border: 1px dashed #fff;
+  line-height: 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  text-align: center;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+footer .footer-bar .container .col-r .lang:hover {
+  opacity: 1;
+}
+footer .footer-bar .container .col-r .icon {
+  display: inline-block;
+  width: 20px;
+  height: 30px;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+footer .footer-bar .container .col-r .icon:hover {
+  opacity: 1;
+}
+footer .footer-bar .container .col-r .icon.icon-fb {
+  background: url(../images/fb.png) no-repeat center center;
+}
+footer .footer-bar .container .col-r .icon.icon-wx {
+  background: url(../images/weixin.png) no-repeat center center;
+}
+footer .footer-bar .container .col-r .split {
+  display: inline-block;
+  border-left: 1px dashed #333;
+  vertical-align: middle;
+  height: 25px;
+  width: 1px;
+  margin: 0 3px 0 4px;
+}
+section#about-us .container,
+section#touchic-1 .container,
+section#projects .container,
+section#join-us .container {
+  width: 1000px;
+  padding: 0 200px;
+}
+section#about-us .container,
+section#projects .container,
+section#touchic-1 .container,
+section#join-us .container {
+  padding-bottom: 120px;
+  position: relative;
+}
+section#about-us h4.content-fix,
+section#projects h4.content-fix,
+section#touchic-1 h4.content-fix,
+section#join-us h4.content-fix {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 50px;
+  left: 0px;
+  background-color: #fff;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+section.team .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 0px;
-  padding-right: 0px;
-  width: 960px;
+  padding-left: 0;
+  padding-right: 0;
+}
+section.team .container .col-avator {
+  position: relative;
+  float: left;
+  width: 41.66666667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 100px;
+}
+section.team .container .col-avator img {
+  border: 1px solid #ddd;
+  width: 300px;
+}
+section.team .container .col-description {
+  position: relative;
+  float: left;
+  width: 58.33333333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 100px;
+  text-align: left;
+}
+section.team .container .col-description h1 {
+  text-align: left;
+}
+section.team .container .col-description h4 {
+  text-align: left;
+}
+section.content {
+  background: #fff;
+  display: none;
+  padding-bottom: 53px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+}
+section.content .container {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0%;
+  padding-right: 0%;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   color: #605f5f;
   text-align: center;
+  overflow: hidden;
 }
 section.content .container:before,
 section.content .container:after {
@@ -419,30 +617,261 @@ section.content .container:after {
 section.content .container:after {
   clear: both;
 }
+section.content .container h3 {
+  font-size: 15px;
+}
+section.content .container p {
+  font-size: 15px;
+}
 section.content .container h1 {
   font-size: 30px;
   font-weight: bold;
   color: #a0a0a0;
+  text-align: center;
 }
 section.content .container h1 strong {
   display: inline-block;
   border-bottom: 3px solid #a0a0a0;
   padding: 16px 40px;
 }
-section.content .container h3 {
-  font-size: 15px;
-}
 section.content .container h4 {
   font-size: 12px;
+  text-align: center;
+  bottom: 40px;
 }
 section.content .container h4 strong {
   display: inline-block;
   border-top: 3px solid #a0a0a0;
   padding: 12px 40px;
 }
-section.content .container p {
-  font-size: 15px;
+section.touchic {
+  padding-top: 100px;
+}
+section#home {
+  height: 100%;
+}
+section#home article {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+section#home article:before,
+section#home article:after {
+  content: " ";
+  display: table;
+}
+section#home article:after {
+  clear: both;
+}
+section#home article .icon {
+  text-align: center;
+  margin: 120px 0 60px;
+  position: relative;
+}
+section#home article .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+section#home article .img.img-1 {
+  background: url(../images/home_01.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+section#home article h1 {
+  color: #e4e4da;
+  font-family: "FZLTTH";
+  font-size: 36px;
+  text-align: center;
+}
+section#home article h1 .txt {
+  display: inline-block;
+}
+section#home article .text {
+  position: relative;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 100px;
+  font-family: "FZLTXH";
+  font-size: 12px;
+}
+section#home article .text h4 {
+  text-align: center;
+  maring: 0;
+  height: 1px;
+}
+section#home article .text h4 strong {
+  border-top: 3px solid #e4e4da;
+  width: 100px;
+  display: inline-block;
+}
+section#home article .text p {
+  text-align: center;
+  color: #e4e4da;
+  position: relative;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+section#home article .text p strong {
+  font-family: "FZLTTH";
+  color: #e4e4da;
+  font-size: 40px;
+  margin: 0 5px;
+  font-weight: normal;
+  position: absolute;
+}
+section#home article .text p strong.left {
+  left: -50px;
+  top: 10px;
+}
+section#home article .text p strong.right {
+  right: 20px;
+  top: 75px;
 }
 section#welcome {
   overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+section#welcome article {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+section#welcome article:before,
+section#welcome article:after {
+  content: " ";
+  display: table;
+}
+section#welcome article:after {
+  clear: both;
+}
+section#welcome article .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+section#welcome article .img.img-1 {
+  background: url(../images/welcome_01.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+section#welcome article .img.img-2 {
+  background: url(../images/welcome_02.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+section#welcome article .img.img-3 {
+  background: url(../images/welcome_03.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+section#welcome article .img.img-4 {
+  background: url(../images/welcome_04.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+section#welcome article .img.img-5 {
+  background: url(../images/welcome_05.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+section#welcome article .text h1,
+section#welcome article .text p,
+section#welcome article .text .line {
+  position: relative;
+}
+section#welcome article .text h1 {
+  font-family: 'FZLTZH';
+  color: #3a3a3a;
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+section#welcome article .text p {
+  font-family: 'FZLTXH';
+  color: #5d5d5d;
+  font-size: 24px;
+  position: relative;
+  float: left;
+  margin-top: 5px;
+}
+section#welcome article .text p strong {
+  font-family: 'FZLTTH';
+  color: #3a3a3a;
+  margin: 0 5px;
+  font-size: 50px;
+  font-weight: normal;
+  position: absolute;
+}
+section#welcome article .text p strong.left {
+  left: -60px;
+}
+section#welcome article .text p strong.right {
+  right: -50px;
+}
+section#welcome article .text .line {
+  height: 1px;
+  background-color: #9d8764;
+}
+section#welcome article .text.text-1 h1 {
+  left: 10%;
+  margin-top: 10%;
+}
+section#welcome article .text.text-1 p {
+  left: 10%;
+}
+section#welcome article .text.text-1 p strong.right {
+  right: 0px;
+}
+section#welcome article .text.text-2 h1 {
+  left: 10%;
+  margin-top: 30%;
+}
+section#welcome article .text.text-2 p {
+  left: 10%;
+  text-align: left;
+}
+section#welcome article .text.text-2 p strong.right {
+  right: 0px;
+  bottom: -5px;
+}
+section#welcome article .text.text-3 h1 {
+  left: 70%;
+  margin-top: 10%;
+}
+section#welcome article .text.text-3 p {
+  left: 70%;
+}
+section#welcome article .text.text-3 p strong.right {
+  right: -30px;
+  bottom: -60px;
+}
+section#welcome article .text.text-4 h1 {
+  left: 10%;
+  margin-top: 25%;
+}
+section#welcome article .text.text-4 p {
+  left: 10%;
+}
+section#welcome article .text.text-4 p strong.right {
+  right: 10px;
+}
+section#welcome article .text.text-5 h1 {
+  left: 60%;
+  margin-top: 10%;
+}
+section#welcome article .text.text-5 p {
+  text-align: right;
+  left: 70%;
+}
+section#welcome article .text.text-5 p strong.right {
+  right: 120px;
+  bottom: -35px;
 }

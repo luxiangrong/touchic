@@ -21,7 +21,7 @@
 				$(item).css('left', i * navWidth / navItemsCount + 'px');
 				
 				var subNav = $(item).find('> ul');
-				var subNavWidth = subNav.width();
+				var subNavWidth = $(item).width();
 				var subNavItems = subNav.find('> li');
 				subNavItemsCount = subNavItems.length;
 				subNavItems.width(subNavWidth/subNavItemsCount);
@@ -34,6 +34,7 @@
 			});
 			
 			navItems.on('click', function(e){
+				e.stopPropagation();
 				index = $(this).index();
 				subNavItemsCount  = $(this).find('> ul > li').length;
 				var nextSubNavItemsCount = $(this).next().find('> ul > li').length;
@@ -51,13 +52,56 @@
 			_this.append(fg);
 			
 			updateUI(navWidth, index, subIndex, fg);
-			
-			console.log('Init');
-			console.log('主导航: ' + index);
-			console.log('子导航: ' + subIndex);
+			opts.move(index, subIndex);
 			
 			var isFF = 'MozAppearance' in document.documentElement.style;
 			var moving = false;
+			
+			$(document).on('click', function(){
+				currentSubItemsCount = bg.find('> li').eq(index).find('> ul > li').length;
+				if(index >= navItemsCount - 1 && subIndex >= currentSubItemsCount - 1) {
+					return;
+				}
+				
+				if(currentSubItemsCount == 0) {
+					index = index + 1;
+					subIndex = 0;
+				} else {
+					if(subIndex >= currentSubItemsCount - 1) {
+						index = index + 1;
+						subIndex = 0;
+					} else {
+						subIndex = (subIndex + 1) % currentSubItemsCount;
+					}
+				}
+				opts.move(index, subIndex);
+				updateUI(navWidth, index, subIndex, fg);
+			});
+			
+			$(window).on('resize', function(){
+				navWidth = _this.width();
+				navItemWidth = navWidth / navItemsCount;
+				navItems.width(navWidth / navItemsCount);
+				navItems.each(function(i, item) {
+					$(item).css('left', i * navWidth / navItemsCount + 'px');
+					
+					var subNav = $(item).find('> ul');
+					var subNavWidth = $(item).width();
+					var subNavItems = subNav.find('> li');
+					subNavItemsCount = subNavItems.length;
+					subNavItems.width(subNavWidth/subNavItemsCount);
+					subNavItems.each(function(ii, iitem) {
+						$(iitem).css('left', ii * subNavWidth / subNavItemsCount + 'px');
+					});
+				});
+				fg.remove();
+				fg = bg.clone(true, true);
+				fg.removeClass('bg');
+				fg.addClass('fg');
+				_this.append(fg);
+				updateUI(navWidth, index, subIndex, fg);
+			});
+			
 			_scrollable($(window)).on(isFF?'DOMMouseScroll':'mousewheel', function(e){
 				e.preventDefault();
 				
@@ -159,11 +203,9 @@
 
 	$.fn.knav.defaults = {
 		move: function(index, subIndex){
-			console.log('主导航: ' + index);
-			console.log('子导航: ' + subIndex);
 		},
 		initIndex: 0,
-		initSubIndex: 2
+		initSubIndex: 0
 	};
 
 })(jQuery);
