@@ -691,8 +691,8 @@ section#home article h1 .txt {
 }
 section#home article .text {
   position: relative;
-  width: 600px;
   text-align: center;
+  width: 600px;
   margin: 0 auto;
   margin-top: 100px;
   font-family: "FZLTXH";
@@ -709,20 +709,22 @@ section#home article .text h4 strong {
   display: inline-block;
 }
 section#home article .text p {
+  text-align: center;
   color: #e4e4da;
   position: relative;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5em;
 }
 section#home article .text p strong {
   font-family: "FZLTTH";
+  color: #e4e4da;
   font-size: 40px;
   margin: 0 5px;
   font-weight: normal;
   position: absolute;
 }
 section#home article .text p strong.left {
-  left: 0px;
+  left: -50px;
   top: 10px;
 }
 section#home article .text p strong.right {
@@ -820,6 +822,7 @@ section#welcome article .text .line {
 }
 section#welcome article .text.text-1 h1 {
   left: 10%;
+  margin-top: 10%;
 }
 section#welcome article .text.text-1 p {
   left: 10%;
