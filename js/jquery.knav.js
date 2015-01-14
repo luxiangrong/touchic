@@ -52,6 +52,9 @@
 			
 			updateUI(navWidth, index, subIndex, fg);
 			
+			console.log('Init');
+			console.log('主导航: ' + index);
+			console.log('子导航: ' + subIndex);
 			
 			var isFF = 'MozAppearance' in document.documentElement.style;
 			var moving = false;
