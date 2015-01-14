@@ -25,7 +25,7 @@
 		
 
 		var t1 = new TimelineMax();
-		t1.timeScale(2);
+		t1.timeScale(20);
 		$('#welcome').show();
 		$('#welcome article').each(function(i, item){
 			t1.add(createWelcomeItemTween($(this)), "-=5");
@@ -91,15 +91,18 @@
 								if(last.index != 3) {
 									lastSection = $("[data-index=" + last.index + "]");
 									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}))
+									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 									timeline.call(function(){lastSection.hide()});
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px")});
 								} else {
 									if(last.subIndex != curr.subIndex)
 										timeline.add(function(){lastSection.hide()});
 								}
 								section.css('left', '0px');
 								timeline.add(function(){section.show()});
-								timeline.add(TweenMax.fromTo(section.find('.col-avator'), 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"}), '-=0');
-								timeline.add(TweenMax.fromTo(section.find('.col-description'), 1 ,{rotationY:0, transformOrigin:"50% 50%"}, {rotationY:360, transformOrigin:"50% 50%"}), '-=0.5');
+								timeline.add(TweenMax.fromTo(section.find('.col-avator'), 1 ,{left: "2000px"}, {left: '0px'}), '-=0');
+								timeline.add(TweenMax.fromTo(section.find('.col-description'), 1 ,{left: "2000px"}, {left: '0px'}), '-=0.5');
+								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 								break;
 							case 1:
 								var timeline = new TimelineMax();
@@ -108,7 +111,9 @@
 								if(last.index != 1) {
 									lastSection = $("[data-index=" + last.index + "]");
 									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}))
+									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 									timeline.call(function(){lastSection.hide()});
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px")});
 								} else {
 									if(last.subIndex != curr.subIndex)
 										timeline.add(function(){lastSection.hide()});
@@ -116,18 +121,22 @@
 								section.css('left', '0px');
 								timeline.add(function(){section.show()});
 								timeline.add(TweenMax.fromTo(section, 1 ,{alpha: 0}, {alpha: 1}), '-=0');
+								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 								break;
 							default:
 								var timeline = new TimelineMax();
 								var section = $("[data-index=" + index + "]");
 								var lastSection = $("[data-index=" + last.index + "]");
 								timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}))
+								timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 								if(last.index != curr.index) {
 									timeline.call(function(){lastSection.hide()});
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px")});
 								}
 								timeline.add(function(){section.show();}, "-=1");
 								// timeline.add(TweenMax.fromTo(section, 1 ,{rotationY:0, transformOrigin:"50% 50%", left: "-4000px"}, {left: '0px',rotationY:360, transformOrigin:"50% 50%"}));
 								timeline.add(TweenMax.fromTo(section, 1 ,{left: "2000px"}, {left: '0px'}), "-=1");
+								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 								break;
 						}
 					},

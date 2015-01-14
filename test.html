@@ -6,24 +6,91 @@
 		<title>Touchic</title>
 
 		<meta name="author" content="123" />
-		
+
 		<style>
 			@font-face {
 				font-family: 'FZLTXH';
-  				src: url('font/FZLTXHK_cut.ttf');
+				src: url('font/FZLTXHK_cut.ttf');
 			}
 			@font-face {
 				font-family: 'FZLTZH';
-  				src: url('font/FZLTZHK_cut.ttf');
+				src: url('font/FZLTZHK_cut.ttf');
 			}
 			@font-face {
 				font-family: 'FZLTTH';
-  				src: url('font/FZLTTHJW_cut.ttf');
+				src: url('font/FZLTTHJW_cut.ttf');
+			}
+			p {
+				width: 300px;
+				margin: 0 auto;
 			}
 		</style>
 	</head>
 	<body>
-		<div style="font-family: FZLTTH;font-size: 25px;">ABC“”</div>
+		<p><a id="hash_a" href="#hash">Jump To Hash</a></p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<a name="hash"></a>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+		<p>
+			These two pieces of code may appear to be functionally equivalent, at first glance, but they are not. Notably the setTimeout code will always have at least a 10ms delay after the previous callback execution (it may end up being more, but never less) whereas the setInterval will attempt to execute a callback every 10ms regardless of when the last callback was executed.
+		</p>
+
+		<script>
+			console.log("window.location:" + window.location);
+			console.log("document.location:" + document.location);
+			console.log("document.URL:" + document.URL);
+			// window.location.replace(window.location.href+"#aaa");
+			// console.log("window.location:" + window.location);
+			// console.log("document.location:" + document.location);
+			// console.log("document.URL:" + document.URL);
+			
+			showModalDialog("http://www.baidu.com");
+			
+			document.addEventListener('click', function(){
+				console.log("window.location:" + window.location);
+				console.log("document.location:" + document.location);
+				console.log("document.URL:" + document.URL);
+				document.location.href="http://www.baidu.com";
+			});
+		</script>
 	</body>
 </html>
 
