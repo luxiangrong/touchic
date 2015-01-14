@@ -276,11 +276,29 @@ section {
   &#about-us,
   &#projects,
   &#touchic-1,
+  &#team-1,
+  &#team-2,
+  &#team-3,
+  &#team-4,
   &#join-us
    {
     .container {
       padding-bottom: 120px;
+      padding-top: 130px;
       position: relative;
+    }
+    h1 {
+      &.content-fix-top {
+        width: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-color: #fff;
+        margin: 0;
+        padding-bottom: 10px;
+        padding-top: 60px;
+        margin-top: 0px;
+      }
     }
     h4 {
       &.content-fix {
@@ -394,7 +412,9 @@ section {
       h1 {
         color: #e4e4da;
         font-family: "FZLTTH";
-        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        font-size: 40px;
         text-align: center;
         .txt {
           display: inline-block;
@@ -403,10 +423,10 @@ section {
       .text {
         position: relative;
         text-align: center;
-        width: 600px;
+        width: 650px;
         margin: 0 auto;
         margin-top: 100px;
-        font-family: "FZLTXH";
+        font-family: "FZLTZH";
         font-size: 12px;
         h4 {
           text-align: center;
@@ -439,6 +459,9 @@ section {
               right: 20px;
               top: 75px;
             }
+          }
+          span {
+            color: #fff;
           }
         }
       }
@@ -500,8 +523,8 @@ section {
           color: #5d5d5d;
           font-size: 24px;
           position: relative;
-          float: left;
           margin-top: 5px;
+          float: left;
           strong {
             font-family: 'FZLTTH';
             color: #3a3a3a;
@@ -582,12 +605,14 @@ section {
         }
         &.text-5 {
           h1 {
-            left: 60%;
+            right: 20%;
+            text-align: right;
             margin-top: 10%;
           }
           p {
             text-align: right;
-            left: 70%;
+            right: 20%;
+            float: right;
             strong {
               &.right {
                 right: 120px;

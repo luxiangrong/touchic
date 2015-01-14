@@ -90,20 +90,27 @@
 								var lastSection = $("[data-index=3][data-sub-index=" + last.subIndex + "]");
 								if(last.index != 3) {
 									lastSection = $("[data-index=" + last.index + "]");
-									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}))
+									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}));
 									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
-									timeline.call(function(){lastSection.hide()});
-									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px")});
+									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+									timeline.call(function(){lastSection.hide();});
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
 								} else {
 									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}), "-=1");
+									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
 									if(last.subIndex != curr.subIndex)
-										timeline.call(function(){lastSection.hide()});
+										timeline.call(function(){lastSection.hide();});
 								}
 								section.css('left', '0px');
-								timeline.add(function(){section.show()});
-								timeline.add(TweenMax.fromTo(section.find('.col-avator'), 1 ,{left: "2000px"}, {left: '0px'}), '-=0.5');
-								timeline.add(TweenMax.fromTo(section.find('.col-description'), 1 ,{left: "2000px"}, {left: '0px'}), '-=0.5');
+								timeline.add(function(){section.show();},"-=1");
+								timeline.add(TweenMax.fromTo(section.find('.col-avator'), 1 ,{left: "2000px"}, {left: '0px'}), '-=1');
+								timeline.add(TweenMax.fromTo(section.find('.col-description'), 0.5 ,{left: "2000px"}, {left: '0px'}), '-=0.5');
 								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+								timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
 								break;
 							case 1:
 								var timeline = new TimelineMax();
@@ -111,33 +118,45 @@
 								var lastSection = $("[data-index=1][data-sub-index=" + last.subIndex + "]");
 								if(last.index != 1) {
 									lastSection = $("[data-index=" + last.index + "]");
-									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}))
+									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}),"-=1");
 									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
-									timeline.call(function(){lastSection.hide()});
-									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px")});
+									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+									timeline.call(function(){lastSection.hide();});
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
 								} else {
+									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}), "-=1");
+									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
 									if(last.subIndex != curr.subIndex)
-										timeline.add(function(){lastSection.hide()});
+										timeline.add(function(){lastSection.hide();});
 								}
 								section.css('left', '0px');
-								timeline.add(function(){section.show()});
-								timeline.add(TweenMax.fromTo(section, 1 ,{alpha: 0}, {alpha: 1}), '-=0');
+								// section.show();
+								timeline.add(function(){section.show();},"-=1");
+								timeline.add(TweenMax.fromTo(section, 1 ,{alpha: 0}, {alpha: 1}), '-=1');
 								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+								timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
 								break;
 							default:
 								var timeline = new TimelineMax();
 								var section = $("[data-index=" + index + "]");
 								var lastSection = $("[data-index=" + last.index + "]");
-								timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}))
+								timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}));
 								timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+								timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
 								if(last.index != curr.index) {
-									timeline.call(function(){lastSection.hide()});
-									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px")});
+									timeline.call(function(){lastSection.hide();});
+									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
 								}
 								timeline.add(function(){section.show();}, "-=1");
 								// timeline.add(TweenMax.fromTo(section, 1 ,{rotationY:0, transformOrigin:"50% 50%", left: "-4000px"}, {left: '0px',rotationY:360, transformOrigin:"50% 50%"}));
 								timeline.add(TweenMax.fromTo(section, 1 ,{left: "2000px"}, {left: '0px'}), "-=1");
 								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+								timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
 								break;
 						}
 					},
