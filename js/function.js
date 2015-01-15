@@ -9,8 +9,16 @@
 		function createTextTween(textContainer) {
 			var timeline = new TimelineMax();
 			timeline.fromTo([textContainer.find('h1'), textContainer.find('p')], 1, {opacity: 0}, {opacity: 1});
-			timeline.from(textContainer.find('h1'), 5, {left: "-=150px"}, "-=1");
-			timeline.from(textContainer.find('p'), 5, {left: "+=150px"}, "-=5");
+			if(textContainer.find('h1').hasClass("right")) {
+				timeline.from(textContainer.find('h1'), 5, {right: "-=150px"}, "-=1");
+			} else {
+				timeline.from(textContainer.find('h1'), 5, {left: "-=150px"}, "-=1");
+			}
+			if(textContainer.find('p').hasClass("right")) {
+				timeline.from(textContainer.find('p'), 5, {right: "+=150px"}, "-=5");
+			} else {
+				timeline.from(textContainer.find('p'), 5, {left: "+=150px"}, "-=5");
+			}
 			return timeline;
 		}
 		

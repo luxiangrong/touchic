@@ -1,6 +1,30 @@
 @import "variables.less";
 @import "mixins.less";
 
+@font-face {
+  font-family: 'FZLTXH';
+  src: url('../font/FZLTXHK_cut.eot');
+  src: url('../font/FZLTXHK_cut.eott?#iefix') format('embedded-opentype'),
+     url('../font/FZLTXHK_cut.woff') format('woff'),
+       url('../font/FZLTXHK_cut.ttf') format('truetype'),
+       url('../font/FZLTXHK_cut.svg#SingleMaltaRegular') format('svg');
+}
+@font-face {
+  font-family: 'FZLTZH';
+  src: url('../font/FZLTZHK_cut.eot');
+  src: url('../font/FZLTZHK_cut.eott?#iefix') format('embedded-opentype'),
+     url('../font/FZLTZHK_cut.woff') format('woff'),
+       url('../font/FZLTZHK_cut.ttf') format('truetype'),
+       url('../font/FZLTZHK_cut.svg#SingleMaltaRegular') format('svg');
+}
+@font-face {
+  font-family: 'FZLTTH';
+  src: url('../font/FZLTTHJW_cut.eot');
+  src: url('../font/FZLTTHJW_cut.eott?#iefix') format('embedded-opentype'),
+     url('../font/FZLTTHJW_cut.woff') format('woff'),
+       url('../font/FZLTTHJW_cut.ttf') format('truetype'),
+       url('../font/FZLTTHJW_cut.svg#SingleMaltaRegular') format('svg');
+}
 //全网公共样式
 
 body {
@@ -395,6 +419,7 @@ section {
       position: absolute;
       left: 0;
       top: 0;
+      text-align: center;
       .icon {
         text-align: center;
         margin: 120px 0 60px;
@@ -423,7 +448,6 @@ section {
       .text {
         position: relative;
         text-align: center;
-        width: 650px;
         margin: 0 auto;
         margin-top: 100px;
         font-family: "FZLTZH";
@@ -442,8 +466,9 @@ section {
           text-align: center;
           color: #e4e4da;
           position: relative;
-          font-size: 12px;
+          font-size: 10px;
           line-height: 1.5em;
+          display: inline-block;
           strong {
             font-family: "FZLTTH";
             color: #e4e4da;
@@ -605,14 +630,14 @@ section {
         }
         &.text-5 {
           h1 {
-            right: 20%;
-            text-align: right;
+            right: 5%;
             margin-top: 10%;
+            text-align: right;
           }
           p {
             text-align: right;
-            right: 20%;
             float: right;
+            right: 5%;
             strong {
               &.right {
                 right: 120px;
