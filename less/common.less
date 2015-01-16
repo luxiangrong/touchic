@@ -1,30 +1,47 @@
 @import "variables.less";
 @import "mixins.less";
 
+
+
 @font-face {
-  font-family: 'FZLTXH';
-  src: url('../font/FZLTXHK_cut.eot');
-  src: url('../font/FZLTXHK_cut.eott?#iefix') format('embedded-opentype'),
-     url('../font/FZLTXHK_cut.woff') format('woff'),
-       url('../font/FZLTXHK_cut.ttf') format('truetype'),
-       url('../font/FZLTXHK_cut.svg#SingleMaltaRegular') format('svg');
+    font-family: 'FZLTTH';
+    src: url('../font/fzltthjw_cut-webfont.eot');
+    src: url('../font/fzltthjw_cut-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fzltthjw_cut-webfont.woff2') format('woff2'),
+         url('../font/fzltthjw_cut-webfont.woff') format('woff'),
+         url('../font/fzltthjw_cut-webfont.ttf') format('truetype'),
+         url('../font/fzltthjw_cut-webfont.svg#fzlantingheis-h-gbregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
 @font-face {
-  font-family: 'FZLTZH';
-  src: url('../font/FZLTZHK_cut.eot');
-  src: url('../font/FZLTZHK_cut.eott?#iefix') format('embedded-opentype'),
-     url('../font/FZLTZHK_cut.woff') format('woff'),
-       url('../font/FZLTZHK_cut.ttf') format('truetype'),
-       url('../font/FZLTZHK_cut.svg#SingleMaltaRegular') format('svg');
+    font-family: 'FZLTXH';
+    src: url('../font/fzltxhk_cut-webfont.eot');
+    src: url('../font/fzltxhk_cut-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fzltxhk_cut-webfont.woff2') format('woff2'),
+         url('../font/fzltxhk_cut-webfont.woff') format('woff'),
+         url('../font/fzltxhk_cut-webfont.ttf') format('truetype'),
+         url('../font/fzltxhk_cut-webfont.svg#fzlantinghei-el-gbkregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
 @font-face {
-  font-family: 'FZLTTH';
-  src: url('../font/FZLTTHJW_cut.eot');
-  src: url('../font/FZLTTHJW_cut.eott?#iefix') format('embedded-opentype'),
-     url('../font/FZLTTHJW_cut.woff') format('woff'),
-       url('../font/FZLTTHJW_cut.ttf') format('truetype'),
-       url('../font/FZLTTHJW_cut.svg#SingleMaltaRegular') format('svg');
+    font-family: 'FZLTZH';
+    src: url('../font/fzltzhk_cut-webfont.eot');
+    src: url('../font/fzltzhk_cut-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fzltzhk_cut-webfont.woff2') format('woff2'),
+         url('../font/fzltzhk_cut-webfont.woff') format('woff'),
+         url('../font/fzltzhk_cut-webfont.ttf') format('truetype'),
+         url('../font/fzltzhk_cut-webfont.svg#fzlantinghei-db-gbkregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
 //全网公共样式
 
 body {
@@ -294,7 +311,6 @@ section {
     .container {
       width: 1000px;
       padding: 0 200px;
-      
     }
   }
   &#about-us,
@@ -383,12 +399,45 @@ section {
       }
       p {
         font-size: 15px;
+        &.v-middle {
+          span {
+            display:-moz-inline-stack; 
+            display:inline-block; 
+            vertical-align:middle;
+            line-height: 1.2;
+            strong {
+              font-size: 15px;
+              display: inline-block;
+              margin-bottom: 10px;
+              margin-top: 10px;
+            }
+          }
+          &:after {
+            content: " ";
+            width:0; 
+            display:-moz-inline-stack; 
+            display:inline-block; 
+            vertical-align:middle; 
+            font-size:0;
+          }
+        }
       }
       h1 {
         font-size: 30px;
         font-weight: bold;
         color: #a0a0a0;
         text-align: center;
+        &.content-fix-top {
+          width: 100%;
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          background-color: #fff;
+          margin: 0;
+          padding-bottom: 10px;
+          padding-top: 60px;
+          margin-top: 0px;
+        }
         strong {
           display:inline-block;
           border-bottom: 3px solid #a0a0a0;
@@ -399,11 +448,32 @@ section {
         font-size: 12px;
         text-align: center;
         bottom: 40px;
+        &.content-fix {
+          width: 100%;
+          text-align: center;
+          position: fixed;
+          bottom: 50px;
+          left: 0px;
+          background-color: #fff;
+          margin: 0;
+          padding-top: 10px;
+          padding-bottom: 50px;
+        }
         strong {
           display:inline-block;
           border-top: 3px solid #a0a0a0;
           padding: 12px 40px;
         }
+      }
+    }
+    &.about-us,
+    &.projects {
+      .container {
+        padding-bottom: 120px;
+        padding-top: 130px;
+        position: relative;
+        padding-left: 200px;
+        padding-right: 200px;
       }
     }
   }

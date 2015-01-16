@@ -6,6 +6,9 @@
 
 		$("body").height(winHeight);
 		
+		$(".v-middle").height((winHeight - 350));
+		$(".v-middle").css("line-height", (winHeight - 350) + "px");
+		
 		function createTextTween(textContainer) {
 			var timeline = new TimelineMax();
 			timeline.fromTo([textContainer.find('h1'), textContainer.find('p')], 1, {opacity: 0}, {opacity: 1});
@@ -102,12 +105,16 @@
 									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
 									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
 									timeline.call(function(){lastSection.hide();});
-									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
-									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
+									if(last.index != curr.index || (curr.index + last.index + curr.subIndex + last.subIndex) == 0) {
+										timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+										timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
+									}
 								} else {
 									timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}), "-=1");
-									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
-									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+									if(last.index != curr.index || (curr.index + last.index + curr.subIndex + last.subIndex) == 0) {
+										timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+										timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+									}
 									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
 									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
 									if(last.subIndex != curr.subIndex)
@@ -117,8 +124,10 @@
 								timeline.add(function(){section.show();},"-=1");
 								timeline.add(TweenMax.fromTo(section.find('.col-avator'), 1 ,{left: "2000px"}, {left: '0px'}), '-=1');
 								timeline.add(TweenMax.fromTo(section.find('.col-description'), 0.5 ,{left: "2000px"}, {left: '0px'}), '-=0.5');
-								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
-								timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+								if(last.index != curr.index || (curr.index + last.index + curr.subIndex + last.subIndex) == 0) {
+									timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+									timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+								}
 								break;
 							case 1:
 								var timeline = new TimelineMax();
@@ -150,21 +159,28 @@
 								break;
 							default:
 								var timeline = new TimelineMax();
-								var section = $("[data-index=" + index + "]");
-								var lastSection = $("[data-index=" + last.index + "]");
+								var section = $("[data-index=" + curr.index + "][data-sub-index=" + curr.subIndex + "]");
+								var lastSection = $("[data-index=" + last.index + "][data-sub-index=" + last.subIndex + "]");
 								timeline.add(TweenMax.to(lastSection, 1, {left: "-2000px"}));
-								timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
-								timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
-								if(last.index != curr.index) {
-									timeline.call(function(){lastSection.hide();});
-									timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
-									timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
+								if(last.index != curr.index || (curr.index + last.index + curr.subIndex + last.subIndex) == 0) {
+									timeline.add(TweenMax.to(lastSection.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+									timeline.add(TweenMax.to(lastSection.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
 								}
+								if(last.index != curr.index || last.subIndex != curr.subIndex) {
+									timeline.call(function(){lastSection.hide();});
+								}
+								
+								timeline.call(function(){lastSection.find('.content-fix').css("bottom", "50px");});
+								timeline.call(function(){lastSection.find('.content-fix-top').css("top", "0px");});
+								
 								timeline.add(function(){section.show();}, "-=1");
 								// timeline.add(TweenMax.fromTo(section, 1 ,{rotationY:0, transformOrigin:"50% 50%", left: "-4000px"}, {left: '0px',rotationY:360, transformOrigin:"50% 50%"}));
 								timeline.add(TweenMax.fromTo(section, 1 ,{left: "2000px"}, {left: '0px'}), "-=1");
-								timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
-								timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+								
+								if(last.index != curr.index || (curr.index + last.index + curr.subIndex + last.subIndex) == 0) {
+									timeline.add(TweenMax.from(section.find('.content-fix'), 1 ,{bottom: "-200px"}), "-=1");
+									timeline.add(TweenMax.from(section.find('.content-fix-top'), 1 ,{top: "-200px"}), "-=1");
+								}
 								break;
 						}
 					},
