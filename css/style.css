@@ -601,8 +601,8 @@ section#join-us h4.content-fix {
 section.team .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 section.team .container .col-avator {
   position: relative;
@@ -620,12 +620,12 @@ section.team .container .col-avator img {
 section.team .container .col-description {
   position: relative;
   float: left;
-  width: 58.33333333%;
+  width: 41.66666667%;
   min-height: 1px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 100px;
-  text-align: left;
+  text-align: justify;
 }
 section.team .container .col-description h1 {
   text-align: left;
