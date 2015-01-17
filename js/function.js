@@ -36,7 +36,7 @@
 		
 
 		var t1 = new TimelineMax();
-		t1.timeScale(20);
+		t1.timeScale(2);
 		$('#welcome').show();
 		$('#welcome article').each(function(i, item){
 			t1.add(createWelcomeItemTween($(this)), "-=5");
