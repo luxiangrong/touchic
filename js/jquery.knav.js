@@ -57,7 +57,39 @@
 			var isFF = 'MozAppearance' in document.documentElement.style;
 			var moving = false;
 			
-			$(document).on('click', function(){
+			$('.control-left').on('click', function(e){
+				e.stopPropagation();
+				if(index <= 0 && subIndex <= 0) {
+					return;
+				}
+				currentSubItemsCount = bg.find('> li').eq(index).find('> ul > li').length;
+				prevSubItemsCount = bg.find('> li').eq(index - 1).find('> ul > li').length;
+				if(currentSubItemsCount == 0) {
+					index = index - 1;
+					if(prevSubItemsCount == 0) {
+						subIndex = 0;
+					} else {
+						subIndex = prevSubItemsCount - 1;
+					}
+				} else {
+					if(subIndex == 0) {
+						index = index - 1;
+						if(prevSubItemsCount == 0) {
+							subIndex = 0;
+						} else {
+							subIndex = prevSubItemsCount - 1;
+						}
+					} else {
+						subIndex = subIndex - 1;
+					}
+				}
+				opts.move(index, subIndex);
+				updateUI(navWidth, index, subIndex, fg);
+			});
+			
+			$('.control-right').on('click', function(e){
+				e.stopPropagation();
+				
 				currentSubItemsCount = bg.find('> li').eq(index).find('> ul > li').length;
 				if(index >= navItemsCount - 1 && subIndex >= currentSubItemsCount - 1) {
 					return;
@@ -77,6 +109,28 @@
 				opts.move(index, subIndex);
 				updateUI(navWidth, index, subIndex, fg);
 			});
+			
+			
+			// $(document).on('click', function(){
+				// currentSubItemsCount = bg.find('> li').eq(index).find('> ul > li').length;
+				// if(index >= navItemsCount - 1 && subIndex >= currentSubItemsCount - 1) {
+					// return;
+				// }
+// 				
+				// if(currentSubItemsCount == 0) {
+					// index = index + 1;
+					// subIndex = 0;
+				// } else {
+					// if(subIndex >= currentSubItemsCount - 1) {
+						// index = index + 1;
+						// subIndex = 0;
+					// } else {
+						// subIndex = (subIndex + 1) % currentSubItemsCount;
+					// }
+				// }
+				// opts.move(index, subIndex);
+				// updateUI(navWidth, index, subIndex, fg);
+			// });
 			
 			$(window).on('resize', function(){
 				navWidth = _this.width();

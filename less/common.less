@@ -720,3 +720,21 @@ section {
     }
   }
 }
+
+.controls {
+  position: fixed;
+  top: 50%;
+  margin-top: -50px;
+  cursor: pointer;
+  opacity: 0.5;
+  display: none;
+  &:hover {
+    opacity: 0.8;
+  }
+  &.control-left {
+    left: 0;
+  }
+  &.control-right {
+    right: 0;
+  }
+}

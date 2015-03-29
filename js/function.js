@@ -88,6 +88,7 @@
 			
 			$(document).one('click', function(){
 				$("#home").hide();
+				$('.controls').show();
 				var knav = $(".scroll-nav").knav({
 					move: function(index, subIndex) {
 						last.index = curr.index;

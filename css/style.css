@@ -981,3 +981,20 @@ section#welcome article .text.text-5 p strong.right {
   right: 120px;
   bottom: -35px;
 }
+.controls {
+  position: fixed;
+  top: 50%;
+  margin-top: -50px;
+  cursor: pointer;
+  opacity: 0.5;
+  display: none;
+}
+.controls:hover {
+  opacity: 0.8;
+}
+.controls.control-left {
+  left: 0;
+}
+.controls.control-right {
+  right: 0;
+}
