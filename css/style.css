@@ -611,7 +611,7 @@ section.team .container .col-avator {
   min-height: 1px;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 100px;
+  padding-top: 80px;
 }
 section.team .container .col-avator img {
   border: 1px solid #ddd;
@@ -668,22 +668,26 @@ section.content .container:after {
 section.content .container h3 {
   font-size: 15px;
 }
-section.content .container p {
+section.content .container p,
+section.content .container div {
   font-size: 15px;
 }
-section.content .container p.v-middle span {
+section.content .container p.v-middle span,
+section.content .container div.v-middle span {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
   line-height: 1.2;
 }
-section.content .container p.v-middle span strong {
+section.content .container p.v-middle span strong,
+section.content .container div.v-middle span strong {
   font-size: 15px;
   display: inline-block;
   margin-bottom: 10px;
   margin-top: 10px;
 }
-section.content .container p.v-middle:after {
+section.content .container p.v-middle:after,
+section.content .container div.v-middle:after {
   content: " ";
   width: 0;
   display: -moz-inline-stack;
@@ -997,4 +1001,15 @@ section#welcome article .text.text-5 p strong.right {
 }
 .controls.control-right {
   right: 0;
+}
+#jp_container_1 {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #9a8461;
+}
+#jp_container_2 {
+  margin: 0 auto;
+  margin-top: 140px;
 }

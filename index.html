@@ -5,11 +5,66 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Touchic</title>
 
+		<link type="text/css" href="js/lib/jplayer/skin/pink.flag/css/jplayer.pink.flag.min.css" rel="stylesheet" />
 		<link href="css/style.css" rel="stylesheet" />
 		<meta name="author" content="123" />
+		
+		<!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
 
 	</head>
 	<body>
+		<section id="join-us-2" class="content" data-index="4" data-sub-index="1">
+			<div class="container">
+				<h1 class="content-fix-top"><strong>5</strong></h1>
+					<div id="jp_container_2" class="jp-video " role="application" aria-label="media player">
+					  <div class="jp-type-single">
+					    <div id="jquery_jplayer_2" class="jp-jplayer"></div>
+					    <div class="jp-gui">
+					      <div class="jp-video-play">
+					        <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+					      </div>
+					      <div class="jp-interface">
+					        <div class="jp-progress">
+					          <div class="jp-seek-bar">
+					            <div class="jp-play-bar"></div>
+					          </div>
+					        </div>
+					        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+					        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+					        <div class="jp-details">
+					          <div class="jp-title" aria-label="title">&nbsp;</div>
+					        </div>
+					        <div class="jp-controls-holder">
+					          <div class="jp-volume-controls">
+					            <button class="jp-mute" role="button" tabindex="0">mute</button>
+					            <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+					            <div class="jp-volume-bar">
+					              <div class="jp-volume-bar-value"></div>
+					            </div>
+					          </div>
+					          <div class="jp-controls">
+					            <button class="jp-play" role="button" tabindex="0">play</button>
+					            <button class="jp-stop" role="button" tabindex="0">stop</button>
+					          </div>
+					          <div class="jp-toggles">
+					            <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+					            <button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					    <div class="jp-no-solution">
+					      <span>Update Required</span>
+					      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+					    </div>
+					  </div>
+					</div>
+				<h4 class="content-fix"><strong>JOIN US</strong></h4>
+			</div>
+		</section>
 		<section id="join-us" class="content" data-index="4" data-sub-index="0">
 			<div class="container">
 				<h1 class="content-fix-top"><strong>5</strong></h1>
@@ -29,14 +84,14 @@
 				<h4 class="content-fix"><strong>JOIN US</strong></h4>
 			</div>
 		</section>
-		<section id="team-4" class="content team" data-index="3" data-sub-index="3">
+		<section id="team-4" class="content team" data-index="3" data-sub-index="2">
 			<div class="container">
 				<h1 class="content-fix-top"><strong>4</strong></h1>
 				<div class="row">
 					<div class="col-avator">
 						<img src="images/avator_04.jpg" />
 						<p>
-							Vivian Wang Business Development Director
+							Vivian Wang Vice President
 						</p>
 					</div>
 					<div class="col-description">
@@ -48,25 +103,7 @@
 				<h4 class="content-fix"><strong>OUR TEAM</strong></h4>
 			</div>
 		</section>
-		<section id="team-3" class="content team" data-index="3" data-sub-index="2">
-			<div class="container">
-				<h1 class="content-fix-top"><strong>4</strong></h1>
-				<div class="row">
-					<div class="col-avator">
-						<img src="images/avator_03.jpg" />
-						<p>
-							Yang Xutao Technology R&D Director
-						</p>
-					</div>
-					<div class="col-description">
-						<p>
-							As head of Touchic’s technology department based in Chengdu, Yang Xutao is responsible for Touchic’s state of the art technology solutions. Head of a team of programmers and engineers Yang Xutao has been developing and implementing in-house mobile solutions making Touchic one of the most innovative companies in China. Before joining Touchic, Yang Xutao was a member of Microsoft’s R&D team in China and developed technology solutions for Chengdu Mobile Interactive Company.
-						</p>
-					</div>
-				</div>
-				<h4 class="content-fix"><strong>OUR TEAM</strong></h4>
-			</div>
-		</section>
+		
 		<section id="team-2" class="content team" data-index="3" data-sub-index="1">
 			<div class="container">
 				<h1 class="content-fix-top"><strong>4</strong></h1>
@@ -357,12 +394,12 @@
 									<li></li>
 									<li></li>
 									<li></li>
-									<li></li>
 								</ul>
 							</li>
 							<li>
 								JOIN US
 								<ul class="sub-nav">
+									<li></li>
 									<li></li>
 								</ul>
 							</li>
@@ -409,12 +446,19 @@
 			<img src="images/right.png" alt="">
 		</div>
 		
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+		<div id="jp_container_1">
+		  <div class="jp-play">Play</div>
+		  <div class="jp-pause">Pause</div>
+		</div>
+		
 		<script src="js/modernizr-2.8.3.min.js"></script>
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/jquery.knav.js"></script>
 		<script src="js/lib/greensock/plugins/CSSPlugin.js"></script>
 		<script src="js/lib/greensock/TweenMax.js"></script>
 		<script src="js/lib/greensock/TimelineMax.js"></script>
+		<script src="js/lib/jplayer/jplayer/jquery.jplayer.min.js"></script>
 
 		<script src="js/function.js"></script>
 	</body>

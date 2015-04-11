@@ -89,6 +89,7 @@
 			$(document).one('click', function(){
 				$("#home").hide();
 				$('.controls').show();
+				$("#jquery_jplayer_1").jPlayer('pause');
 				var knav = $(".scroll-nav").knav({
 					move: function(index, subIndex) {
 						last.index = curr.index;
@@ -191,6 +192,39 @@
 				knav.show();
 			});
 		});
+		
+		$("#jquery_jplayer_1").jPlayer({
+	        ready: function () {
+	          var audioPlayer = $(this).jPlayer("setMedia", {
+	            title: "Bubble",
+	            m4a: "http://caseshow-demo.stor.sinaapp.com/audio1.m4a",
+	            oga: "http://caseshow-demo.stor.sinaapp.com/audio1.ogg"
+	          });
+	          audioPlayer.jPlayer('play');
+	        },
+	        swfPath: "js/lib/jplayer/jplayer",
+	        supplied: "m4a, oga",
+	        useStateClassSkin: true,
+	        cssSelectorAncestor: '#jp_container_1'
+	      });
+	      
+	      $("#jquery_jplayer_2").jPlayer({
+	        ready: function () {
+	          $(this).jPlayer("setMedia", {
+	            title: "Touchic 动态刊例",
+	            m4v: "http://caseshow-demo.stor.sinaapp.com/video1.mp4",
+	          });
+	        },
+	        cssSelectorAncestor: "#jp_container_2",
+	        swfPath: "js/lib/jplayer/jplayer",
+	        supplied: "m4v, ogv",
+	        useStateClassSkin: true,
+	        autoBlur: false,
+	        smoothPlayBar: true,
+	        keyEnabled: true,
+	        remainingDuration: true,
+	        toggleDuration: true
+	      });
 		
 		// t1.call(function(){
 			// var knav = $(".scroll-nav").knav({
