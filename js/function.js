@@ -197,8 +197,8 @@
 	        ready: function () {
 	          var audioPlayer = $(this).jPlayer("setMedia", {
 	            title: "Bubble",
-	            m4a: "http://caseshow-demo.stor.sinaapp.com/audio1.m4a",
-	            oga: "http://caseshow-demo.stor.sinaapp.com/audio1.ogg"
+	            m4a: "images/audio1.m4a",
+	            oga: "images/audio1.ogg"
 	          });
 	          audioPlayer.jPlayer('play');
 	        },
@@ -212,7 +212,7 @@
 	        ready: function () {
 	          $(this).jPlayer("setMedia", {
 	            title: "Touchic 动态刊例",
-	            m4v: "http://caseshow-demo.stor.sinaapp.com/video1.mp4",
+	            m4v: "images/video1.mp4",
 	          });
 	        },
 	        cssSelectorAncestor: "#jp_container_2",

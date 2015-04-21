@@ -749,5 +749,22 @@ section {
 
 #jp_container_2 {
   margin: 0 auto;
-  margin-top: 140px;
+  margin-top: 160px;
+  position: relative;
+  border-width: 0px;
+  .jp-interface {
+    position: absolute;
+    bottom: -100px;
+    left: 0px;
+    background-color: #1e1e1e;
+    transition: all 0.5s;
+    .jp-duration, .jp-current-time {
+      color: #DDDDDD;
+    }
+  }
+  &:hover {
+    .jp-interface{
+      bottom: 0px;
+    }
+  }
 }

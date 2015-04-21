@@ -743,5 +743,21 @@ section#welcome article .text.text-5 p strong.right {
 }
 #jp_container_2 {
   margin: 0 auto;
-  margin-top: 140px;
+  margin-top: 160px;
+  position: relative;
+  border-width: 0px;
+}
+#jp_container_2 .jp-interface {
+  position: absolute;
+  bottom: -100px;
+  left: 0px;
+  background-color: #1e1e1e;
+  transition: all 0.5s;
+}
+#jp_container_2 .jp-interface .jp-duration,
+#jp_container_2 .jp-interface .jp-current-time {
+  color: #DDDDDD;
+}
+#jp_container_2:hover .jp-interface {
+  bottom: 0px;
 }
